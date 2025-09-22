@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MCC Computer Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+     height:20px;
+      background: #f8E9EE;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-logo {
+  
+   margin-left:0px;
+    display:flex;
+       font-family: 'Inter', 'Poppins', 'Roboto', 'Segoe UI', sans-serif;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #000000;
+      gap:0;
+    }
+.nav-logo img {
+  height: 40px;   /* Navbar ke andar fix hoga */
+  width: auto;   /* proportion maintain karega */
+  display:inline-block;
+ margin-right:0px;
+ padding:o;
+}
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color:#000000;
+      font-family: 'Inter', 'Poppins', 'Roboto', 'Segoe UI', sans-serif;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color: #ff4500; 
+   transform:translatey(-3px);
+}
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #004466;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        padding: 15px;
+      }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: flex; }
+    }
+
+    /* Header */
+header {
+  position: relative;
+  height: 300px;
+  background: #000;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* h1 + p ko center karega */
+  align-items: center;
+}
+header video{
+        width:100%;
+        height:340px;
+       object-fit:cover;
+       background:#000;
+       }
+   @media (max-width:768px){
+    header video{
+         object-fit:contain;
+         background:#000;
+      }
+    }
+ 
+header p {
+ white-space:nowrap;
+ font-family:'poppins' , 'segoe UI' , sans-sarif; 
+font-size:1.2rem;
+font-weight:500;
+letter-spacing:1px;
+  position: absolute;
+  top: 50%;              /* vertical center */
+  left: 50%;             /* horizontal center */
+  transform: translate(-50%, -50%);  /* perfect center */
+  font-size: 1.3rem;
+  color: #ffffff;          /* background dark hai to white rakho */
+  margin: 0;
+}
+
+header .cta-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  background: linear-gradient(270deg, #ff512f, #dd2476, #ff512f);
+  background-size: 200% 200%; /* thoda realistic rakho */
+  animation: gradientMove 1s linear infinite;
+  transition: transform 0.2s;
+}
+
+header .cta-btn:hover {
+  transform: translateX(-50%) scale(1.15); /* zoom + center maintain */
+  box-shadow: 0 8px 25px rgba(255, 81, 47, 0.6); /* glow effect */
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+    /* Container */
+    .container {
+    background:white;
+      max-width: 100%;
+      margin:auto;
+      padding: 50px 20px;
+    }
+
+    /* Services */
+    .services {
+         font-family:'inter',sans-sarif;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 25px;
+     width:100%;
+    }
+    .service-box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    .service-box:hover{
+           transform:translatey(-10px)
+           scale(1.5);
+          box-shadow:0 8px 25px;
+         rgba(0,0,0,0.2);
+        cursor:pointer;
+     }
+
+   /* Why Choose Us Hover */
+.feature-box {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #0072ff, #00c6ff); /* reverse gradient */
+  cursor: pointer;
+}
+
+
+
+    .service-box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .service-box img {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .buttons a, .buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .call-btn { background: orange; }
+    .call-btn:hover { background: darkorange; }
+    .book-btn { background: #0072ff; }
+    .book-btn:hover { background: #0044aa; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+     width:100%;
+    }
+    .feature-box {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 400px;
+      max-width: 90%;
+      position: relative;
+    }
+    .modal-content input, .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .modal-content button {
+      padding: 12px;
+      background: #0072ff;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    .brand-logos {
+     font-family:'inter',sans-sarif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.brand-logos img {
+  height: 60px;
+  object-fit: contain;
+  animation: pulse 1s infinite;   /* Auto animation */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.brand-logos img:hover {
+  transform: scale(1.2);
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+    
+    
+
+    /* Footer */
+    footer {
+      font-family:'inter',sans-sarif;
+    height:55px;
+      background: #000000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+   .team {
+       font-family:'inter',sans-sarif;
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #6dd5ed, #2193b0); /* Stylish BG */
+  color: white; 
+  margin-top:20px;
+}
+#our{
+    color:white;
+   font-family:roboto;
+   }
+
+.team h2 {
+    color:#000000;
+  font-size: 2rem;
+  margin-bottom: 40px;
+   font-family: 'Montserrat', sans-serif;
+   }
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  background: white;
+  color: #333;
+  border-radius: 15px;
+  padding: 20px;
+  width: 220px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.team-member img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Hover Effect */
+.team-member:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+   #introduction {
+  padding: 40px 20px;
+  text-align: center;
+  background: #ffcad4; /* Alag background color */
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top:20px;
+ /* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reusable Class */
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 1s ease-out forwards;
+}
+}
+
+#introduction h2 {
+  font-size: 1.8rem;
+  color: #000000;
+  margin-bottom: 15px;
+ font-family: 'Montserrat', sans-serif;
+  
+}
+
+#introduction p {
+ font-family:'inter',sans-sarif;
+  font-size: 1rem;
+  color: #333;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+  
+}
+
+
+    /* Floating Buttons */
+    .float-btn {
+      position: fixed;
+      width: 45px;
+      height: 45px;
+      right: 20px;
+      border-radius: 50%;
+      color: white;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      text-decoration: none;
+      z-index: 100;
+    }
+    .float-call { bottom: 100px; background: #E64A19; }
+    .float-whatsapp { bottom: 40px; background: #25d366; }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  }
+   
+     .counters {
+     
+  background: linear-gradient(135deg, #0072ff, #00c6ff); /* Blue gradient */
+  padding: 50px 0;
+  color: white;
+  text-align: center;
+  
+  /* animation add kiya */
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 1s ease-out forwards;
+}
+
+/* Slide Up Animation Keyframes */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+  .counter-box {
+  background:white;
+  padding:25px 20px;
+  border-radius:15px;
+  width:200px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, opacity 0.6s;
+  opacity: 0;
+  transform: translateY(50px);  /* Pehle neeche rahega */
+}
+
+.counter-box.show {
+  opacity: 1;
+  transform: translateY(0);  /* Scroll aate hi upar slide hoga */
+}
+.counter-box:hover {
+  transition: transform 0.3s, opacity 0.6s;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.counter-box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.counter-box.show {
+  opacity: 1;
+  transform: translateY(0);
+
+}
+.counter {
+  font-size:2.5rem;
+  color:#ff4500;
+  margin:0 0 10px 0;
+}
+.counter-box p {
+  font-size:1.1rem;
+  font-weight:600;
+  margin:0;
+  color:#333;
+  }
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideUp 0.8s ease-out;
+}
+
+.logo{
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+ <img src="SSS.PNG">
+  <div class="nav-logo"></div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#services">Our Services</a>
+    <a href="#features">Why Choose Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Header -->
+<header id="home">
+
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  
+   <p>Reliable • Affordable • IT Solutions</p>
+    <button class="cta-btn" onclick="openModal('Computer Repair')">Book Your Service</button>
+  </div>
+</header>
+<!-- Services -->
+<div class="container" id="services">
+  <h2 style="text-align:center; margin-top:0px;
+  font-family: 'Montserrat', sans-serif;  /* ya 'Montserrat' */
+  font-weight: 800;   /* bold */
+  font-size: clamp(26px, 5vw, 42px);   /* responsive */
+  color: #000000;     /* navy blue */
+ 
+  letter-spacing:1px;
+  word-spacing:4px;}">We Provide Professional<br>Computer & CCTV <br>Services</h2>
+
+
+
+  <div class="services">
+    <div class="service-box">
+      <img src="cctv.JPG" alt="">
+      <h3>CCTV Installation</h3>
+      <p>🔒 24/7 Security – Professional CCTV 
+Protect your home, office, or business with our high-quality CCTV installation.
+</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('CCTV Installation')">Book Now</button>
+      </div>
+      </div>
+       <div class="service-box">
+      <img src="laptop.JPG" alt="">
+      <h3>New Laptop</h3>
+      <p>💻New Laptops–Power Speed & Performance
+Upgrade your work and entertainment experience with our latest laptops for every need.
+.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('New Laptop')""'>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="service-box">
+      <img src="l repair.JPG" alt="">
+      <h3>Laptop Repair</h3>
+      <p>🛠️ Professional laptop Repair- Expert Repair Fast & Reliable
+Bring your laptop back to life with our professional repair solutions.
+.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Laptop Repair')">Book Now</button>
+      </div>
+    </div>
+     <div class="service-box">
+      <img src="c2.JPEG" alt="">
+      <h3>New Computer</h3>
+      <p>🖥️ Brand New Computers – 
+Boost your productivity and entertainment with our latest high-performance computers.
+ </p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('New Computer')""'>Book Now</button>
+      </div>
+    </div>
+
+    <div class="service-box">
+      <img src="c repair.JPG" alt="">
+      <h3>Computer Repair</h3>
+      <p>🛠️ Professional Computer Repair – Fast & Trusted
+Keep your computer running smoothly with our expert repair solutions..</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Computer Repair')">Book Now</button>
+      </div>
+    </div>
+
+    <div class="service-box">
+      <img src="soft.JPG" alt="">
+      <h3>Software Installation</h3>
+      <p>💿 Reliable Software Installation – Hassle Free & Secure
+Get your systems ready with our expert software installation support.
+.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Software Installation')">Book Now</button>
+      </div>
+    </div>
+   <div class="service-box">
+      <img src="sell.JPG" alt="">
+      <h3>Sell Your Laptop</h3>
+      <p>💻 Sell Quick, Easy & Fair Price
+Turn your old or unused laptop into instant cash with our safe & reliable selling service.
+.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('sell laptop')""'>Book Now</button>
+      </div>
+    </div>
+        
+    <div class="service-box">
+      <img src="printer.JPG" alt="">
+      <h3>Printer Setup</h3>
+      <p>🖨️ Printer Setup – Fast & Reliable
+Get your printer ready to use with our expert setup and installation service.
+.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Printer Setup')">Book Now</button>
+      </div>
+    </div>
+      <div class="service-box">
+      <img src="mause.JPG" alt="">
+      <h3>Mouse & Keyboard</h3>
+      <p>🖱️⌨️ Reliable Mouse & Keyboard setup. Get smooth typing and accurate control with our fast & professional solutions.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Mouse & Keyboard')">Book Now</button>
+      </div>
+    </div>
+      <div class="service-box">
+      <img src="morpho.JPG" alt="">
+      <h3>Morpho Devices</h3>
+      <p>🔑 Morpho Device
+
+Secure and reliable . Get quick installation and hassle-free biometric solutions for smooth authentication.</p>
+      <div class="buttons">
+        <a href="tel:+919050488601" class="call-btn">📞 Call Now</a>
+        <button class="book-btn" onclick="openModal('Morpho Devices')">Book Now</button>
+      </div>
+    </div>
+   </div>
+  </div>
+
+<section style="text-align:center; padding:40px; background: #ffcad4;" class="slide-up">
+    <h2 style="font-size:28px; margin-bottom:20px; color:#333; font-family:'inter',sans-sarif;">
+        Choose Your Favorite Brand
+    </h2>
+    <div class="brand-logos">
+        
+        <div>
+            <img src="HP.PNG" alt="HP" width="80">
+            <p>HP</p>
+        </div>
+        
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell" width="80">
+            <p>Dell</p>
+        </div>
+        
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" width="80">
+            <p>Apple</p>
+        </div>
+        
+        <div>
+            <img src="lenevo.PNG" alt="Lenovo" width="100">
+            <p>Lenovo</p>
+        </div>
+        
+        <div>
+            <img src="ACER.PNG" alt="Acer" width="100">
+            <p>Acer</p>
+        </div>
+        
+    </div>
+</section>
+
+
+<!-- Why Choose Us -->
+<div class="container slide-up" id="features">
+  <h2 style="text-align:center; margin-bottom:20px;">Why Choose Us</h2>
+  <div class="features">
+    <div class="feature-box">⚡ Quick Service</div>
+    <div class="feature-box">💰 Affordable Pricing</div>
+    <div class="feature-box">🛠️ Expert Technicians</div>
+    <div class="feature-box">✅ Customer Satisfaction</div>
+  </div>
+</div>
+   
+ <section class="team slide-up">
+  <h2>────  Our Leadership  ────</h2>
+  <div class="team-container">
+    <div class="team-member">
+      <img src="sahun.JPEG" alt="Aakil">
+      <h3>Mr Sahun</h3>
+      <p>Founder</p>
+    </div>
+
+    <div class="team-member">
+      <img src="sohil.JPEG" alt="Professional 2">
+      <h3>Mr Sohil</h3>
+      <p>Manager</p>
+    </div>
+   </div>
+ </section>
+  <!-- Counter Section -->
+<section class="counters" style="background:#f0f8ff; padding:60px 20px; text-align:center;">
+  <div style="max-width:1200px; margin:auto; display:flex; justify-content:space-around; flex-wrap:wrap; gap:30px;">
+    <div class="counter-box">
+      <h2 class="counter" data-target="1200">0</h2>
+      <p>Happy Customers</p>
+    </div>
+    <div class="counter-box">
+      <h2 class="counter" data-target="630">0</h2>
+      <p>Projects Completed</p>
+    </div>
+    <div class="counter-box">
+      <h2 class="counter" data-target="15">0</h2>
+      <p>Team Members</p>
+    </div>
+    <div class="counter-box">
+      <h2 class="counter" data-target="20">0</h2>
+      <p>Years of Experience</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="introduction"
+   class="slide-up">
+
+
+
+  <h2>────  Mcc Computer  ────</h2>
+  <p>Welcome To Mcc Computer, your Trusted Partner For Professional Computer & CCTV Services.
+ We Specialize In Computer Repair, Networking Solutions,
+ CCTV Installation, Software Support, And IT Consultancy.
+ Our Mission is To Provide Fast, Reliable, And Affordable
+ Aervices To Meet Your Personal And Business Needs Efficiently.
+.</p>
+</section>
+
+
+
+
+<div style="background-color:#ff4500; color:#000; text-align:center; padding:40px 20px; font-family:'inter',sans-sarif; margin-top:20px; margin-bottom:20px;" class="slide-up">
+    
+    <!-- Address -->
+    <div style="margin-bottom:40px;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/marker.png" alt="Address Icon" style="width:40px;"/>
+        <h3 style="margin:10px 0; font-weight:bold;">Address:</h3>
+        <p>Delhi Alwar Road Ward no.06 </p>
+        <P>Near Bharat Ultrasound</p>
+       <p>Nuh,India</p>
+
+    </div>
+
+    <!-- Email -->
+    <div style="margin-bottom:40px;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email Icon" style="width:40px;"/>
+        <h3 style="margin:10px 0; font-weight:bold;">Email:</h3>
+        <p><a  href="mailto:mcccomputernuh@gmail.com" style="text-decoration:none; color:black;">mcccomputernuh@gmail.com</a></p>
+    </div>
+
+    <!-- Open Hours -->
+    <div>
+        <img src="https://img.icons8.com/ios-filled/50/000000/clock.png" alt="Hours Icon" style="width:40px;"/>
+        <h3 style="margin:10px 0; font-weight:bold;">Open Hours:</h3>
+        <p>Mon-Sun: 8am - 8pm</p>
+    </div>
+
+</div>
+           <div id="contact" style="background-color:#fce8d8; color:#000; text-align:center; padding:40px 20px;font-family:'inter',sans-sarif;" class="slide-up">
+
+    <!-- About Section -->
+    <h2 style="font-weight:bold; margin-bottom:15px;">About</h2>
+    <p>Nuh, India</p>
+    <p><a  href="mailto:mcccomputernuh@gmail.com" style="text-decoration:none;">mcccomputernuh@gmail.com</a></p>
+    <p>+91 9050488606</p>
+
+        <!-- Service Section -->
+    <h2 style="font-weight:bold; margin:40px 0 15px;">Service</h2>
+    <p>Cctv Installation</p>
+    <p>Laptop Sell & Repair</p>
+    <p>Computer Sell & Repair</p>
+    <p>Softwear Installation</p>
+     <p>Printer Setup</p>
+    <p>Mause & Keyboard</p>
+     <p> & </p>
+      <p>more</p>
+    <!-- Special Section -->
+    <h2 style="font-weight:bold; margin:40px 0 15px;">Special</h2>
+    <p>Privacy Policy</p>
+    <p>Terms and Conditions</p>
+
+</div>
+
+
+<!-- Modal -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2>📋 Book Your Service</h2>
+    <form onsubmit="sendBooking(event)">
+      <input type="text" id="custName" placeholder="Your Name" required>
+      <input type="tel" id="custPhone" placeholder="Your Phone" required>
+      <select id="serviceSelect" required>
+        <option value="">Select Service</option>
+        <option>Computer Repair</option>
+        <option>Laptop Repair</option>
+        <option>Software Installation</option>
+        <option>Printer Setup</option>
+        <option>sell laptop</option>
+        <option>CCTV Installation</option>
+        <option>Data Recovery</option>
+        <option>New Computer </option>
+        <option>New Laptop </option>
+         <option>Mouse & Keyboard </option>
+          <option>Morpho Devices</option>
+        
+      </select>
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 MCC Computer Services. All Rights Reserved.</p>
+  <p> Designed by  <SPAN STYLE="color:#E64A19; font-family:'POPPINS',INTER',ROBOTO, sans-sarif;"> Aakil Khan</SPAN></P>
+</footer>
+
+<!-- Floating Buttons -->
+<a href="tel:+919050488601" class="float-btn float-call"><i class="fas fa-phone"></i></a>
+<a href="https://wa.me/919050488601" class="float-btn float-whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  // Navbar toggle
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+
+  // Slide up animation
+  const boxes = document.querySelectorAll(".service-box");
+  window.addEventListener("scroll", checkBoxes);
+  function checkBoxes() {
+    const trigger = window.innerHeight * 0.9;
+    boxes.forEach(box => {
+      if (box.getBoundingClientRect().top < trigger) {
+        box.classList.add("show");
+      }
+    });
+  }
+  checkBoxes();
+
+  // Modal
+  let modal = document.getElementById("bookingModal");
+  function openModal(service) {
+    modal.style.display = "flex";
+    document.getElementById("serviceSelect").value = service;
+  }
+  function closeModal() { modal.style.display = "none"; }
+
+  // Booking form -> WhatsApp
+  function sendBooking(e) {
+    e.preventDefault();
+    let name = document.getElementById("custName").value;
+    let phone = document.getElementById("custPhone").value;
+    let service = document.getElementById("serviceSelect").value;
+    let message = `New Booking:%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A💻 Service: ${service}`;
+    window.open(`https://wa.me/919050488601?text=${message}`, "_blank");
+    closeModal();
+  }
+
+const counters = document.querySelectorAll('.counter');
+const counterBoxes = document.querySelectorAll('.counter-box');
+const duration = 2000; // total duration in ms
+let countersStarted = false;
+
+function startCounters() {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const stepTime = Math.floor(duration / target);
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      counter.innerText = count;
+      if(count >= target){
+        counter.innerText = target;
+        clearInterval(interval);
+      }
+    }, stepTime);
+  });
+}
+
+// Check if element is in viewport
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom >= 0;
+}
+
+// Scroll event
+window.addEventListener('scroll', () => {
+  counterBoxes.forEach(box => {
+    if(isInViewport(box)) box.classList.add('show');
+  });
+
+  if(!countersStarted && isInViewport(counterBoxes[0])) {
+    startCounters();
+    countersStarted = true;
+  }
+});
+ 
+  // Slide-up on scroll
+  const slideUpSections = document.querySelectorAll('.slide-up');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 }); // 20% section dikhte hi animation start
+
+  slideUpSections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
