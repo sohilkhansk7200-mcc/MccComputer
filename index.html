@@ -933,10 +933,19 @@ Secure and reliable . Get quick installation and hassle-free biometric solutions
 
 <script>
   // Navbar toggle
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("active");
-  }
+ // Navbar toggle
+function toggleMenu() {
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("active");
 
+  // Add automatic close on link click
+  const navLinks = nav.querySelectorAll("a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("active");
+    });
+  });
+}
   // Slide up animation
   const boxes = document.querySelectorAll(".service-box");
   window.addEventListener("scroll", checkBoxes);
@@ -1027,6 +1036,7 @@ window.addEventListener('scroll', () => {
 </body>
 
 </html>
+
 
 
 
