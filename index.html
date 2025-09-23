@@ -302,6 +302,7 @@ header .cta-btn:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 40px;
   margin: 20px 0;
 }
@@ -325,7 +326,14 @@ header .cta-btn:hover {
   50%  { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
-    
+    @media (max-width: 600px) {
+  .brand-logos img {
+    height: 45px; /* Chhoti screen par thoda chhota */
+  }
+  .brand-logos {
+    gap: 20px; /* gap kam */
+  }
+}
     
 
     /* Footer */
@@ -1006,6 +1014,7 @@ window.addEventListener('scroll', () => {
 </body>
 
 </html>
+
 
 
 
